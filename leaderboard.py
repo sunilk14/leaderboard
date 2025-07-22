@@ -11,7 +11,7 @@ url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRVfLHiUTMKKYoEUra1bZeTsU
 
 df = pd.read_csv(url)
 
-leaderboard = df.groupby("Team")["Task"].nunique().reset_index()
+leaderboard = df.groupby("GroupName")["TaskName"].nunique().reset_index()
 leaderboard.columns = ["Team", "Score"]
 leaderboard = leaderboard.sort_values("Score", ascending=False)
 
