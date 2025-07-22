@@ -7,7 +7,7 @@ if "scores" not in st.session_state:
 
 st.title("📊 Python Hackathon Leaderboard")
 
-url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRhYwVRkT0NT57Ue8f89qwrlfrlPi6WeaAFZ-ZXTgxZIBzN44pYlkjzWBtzPmk6Jr35EG4ZWmWNbEW_/pub?gid=0&single=true&output=csv"
+url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRVfLHiUTMKKYoEUra1bZeTsUA9DcPc4u7aL_fCY2IvKkUDzuN7dTBNvxoEK1whWmmKoxtaaJDTzLWH/pub?gid=1258247712&single=true&output=csv"
 
 df = pd.read_csv(url)
 
