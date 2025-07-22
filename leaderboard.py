@@ -58,7 +58,11 @@ pivot = pivot.set_index("GroupName")
 
 # ---- DISPLAY ----
 st.caption(f"Last updated: {datetime.now().strftime('%H:%M:%S')}")
-st.dataframe(pivot.style.format(na_rep="–"))
+st.dataframe(
+    pivot.style.format(na_rep="–"),
+    use_container_width=True,
+    height=600  # adjust height as needed
+)
 
 # Optional: Refresh button
 if st.button("🔄 Refresh Now"):
