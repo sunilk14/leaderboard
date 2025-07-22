@@ -67,4 +67,5 @@ st.dataframe(
 
 # Optional: Refresh button
 if st.button("🔄 Refresh Now"):
-    st.experimental_rerun()
+    # st.experimental_rerun()
+    st.session_state["force_refresh"] = True
