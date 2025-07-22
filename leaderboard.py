@@ -10,6 +10,9 @@ st.title("🏆 Python Hackathon Leaderboard")
 
 CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRVfLHiUTMKKYoEUra1bZeTsUA9DcPc4u7aL_fCY2IvKkUDzuN7dTBNvxoEK1whWmmKoxtaaJDTzLWH/pub?gid=1258247712&single=true&output=csv"
 
+if "force_refresh" in st.session_state:
+    st.session_state.pop("force_refresh")
+
 # ---- PARAMETERS ----
 GROUPS = [f"Group{str(i).zfill(2)}" for i in range(1, 10)]       # Group01 to Group09
 TASKS = [f"Task{str(i).zfill(2)}" for i in range(1, 11)]          # Task01 to Task10
@@ -64,6 +67,7 @@ st.dataframe(
     height=380,  # adjust height as needed
     width=520
 )
+st.caption("🔄 To update the scores, please refresh the browser manually.")
 
 # Optional: Refresh button
 if st.button("🔄 Refresh Now"):
