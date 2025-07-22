@@ -61,7 +61,7 @@ st.caption(f"Last updated: {datetime.now().strftime('%H:%M:%S')}")
 st.dataframe(
     pivot.style.format(na_rep="–"),
     use_container_width=True,
-    height=400  # adjust height as needed
+    height=400,  # adjust height as needed
     width=500
 )
 
