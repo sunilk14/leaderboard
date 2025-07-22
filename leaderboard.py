@@ -7,22 +7,12 @@ if "scores" not in st.session_state:
 
 st.title("📊 Python Hackathon Leaderboard")
 
-# Team input
-team = st.text_input("Enter your Team Name")
+url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRhYwVRkT0NT57Ue8f89qwrlfrlPi6WeaAFZ-ZXTgxZIBzN44pYlkjzWBtzPmk6Jr35EG4ZWmWNbEW_/pub?gid=0&single=true&output=csv"
 
-# Simulate problem solved
-problems = ["Summary Stats", "Missing Values", "Groupby Aggregation", "Bonus Insight"]
-problem_solved = st.selectbox("Select Problem Solved", problems)
+df = pd.read_csv(url)
 
-if st.button("Submit"):
-    st.session_state.scores.setdefault(team, set()).add(problem_solved)
+leaderboard = df.groupby("Team")["Task"].nunique().reset_index()
+leaderboard.columns = ["Team", "Score"]
+leaderboard = leaderboard.sort_values("Score", ascending=False)
 
-# Show live leaderboard
-st.subheader("🏆 Live Leaderboard")
-
-scoreboard = {
-    team: len(solved_problems) for team, solved_problems in st.session_state.scores.items()
-}
-df = pd.DataFrame(sorted(scoreboard.items(), key=lambda x: -x[1]), columns=["Team", "Score"])
-st.table(df)
-
+st.table(leaderboard)
